@@ -28,18 +28,15 @@
         </div>
     </nav>
     <!-- home section -->
-    <section id="home" class="flex s-around">
-        <div class="left-home flex items-center">
-            <!-- <h1>HEY THERE</h1>
-            <img src="{% static 'images/Screenshot 2026-02-13 205241.png'%}" alt=""> -->
+    <section id="home" class="flex s-around items-center">
+        <div class="left-home">
             <div class="home-content">
                 <h6 class="dhichkiyaaooo">Hi , i'm</h6>
                 <h1 class="t-white">Ankush Singh</h1>
                 <h4 class="dhichkiyaaooo">ML ENGINEER</h4>
+                <a class="btn live hire-me-btn" href="#contact">Let's Connect</a>
             </div>
         </div>
-        <!-- <a href=""></a> -->
-        <a class="btn live dhichkiyaaooo" id="Hire-me" href="#contact">Let's Connect</a>
 
         <div class="right-home flex items-center">
             <div class="circle flex s-centre items-center" id="maininage">
@@ -50,8 +47,7 @@
 
     <!-- about section -->
     <section id="about">
-        <h1 class="t centre my-2 t-white f-2">About <Menu></Menu>
-        </h1>
+        <h1 class="t-centre my-2 t-white f-2">About</h1>
         <div class="about-container flex s-around">
             <div class="about-left flex s-centre items-centre">
                 <img src="{%static 'images/Screenshot 2026-02-13 215504.png'%}" alt="cat imagge">
@@ -67,15 +63,9 @@
 
                 <p class="poppins">My journey in AI spans across building production-grade systems for <strong
                         style="color: #da7fa8;">sales forecasting</strong>, <strong style="color: #da7fa8;">image
-                        classification</strong>, and <strong style="color: #da7fa8;">Agentic AI with RAGs</strong>. I
-                    love crafting end-to-end ML pipelines—from data preprocessing and model development to deployment
-                    using Docker and Django.</p>
+                        classification</strong>, and <strong style="color: #da7fa8;">Agentic AI with RAGs</strong>.</p>
 
-                <p class="poppins">When I'm not training neural networks or optimizing models, you'll find me exploring
-                    the latest advancements in AI research and contributing to open-source projects. Let's build
-                    something extraordinary together!</p>
-
-                <a class="btn" id="Hire-me" href="#contact">Hire Me</a>
+                <a class="btn hire-me-btn" href="#contact">Hire Me</a>
             </div>
         </div>
     </section>
@@ -122,78 +112,69 @@
         <h1 class="t-centre my-2 t-white f-2">Projects</h1>
         <div class="project-container flex s-around">
             <div class="project-card tilt-card">
-                <div class="project-left">
+                <div class="project-info">
                     <h1 class="t-white poppins">SalesVortex</h1>
-                    <p class="t-white poppins">This system uses machine learning to predict sales for FMCG companies
-                        using advanced forecasting techniques...</p>
+                    <p class="t-white poppins">Machine learning for FMCG sales prediction using advanced forecasting.
+                    </p>
                     <div class="button">
                         <a href="https://github.com/ankushsingh003/SalesVortex---Predicting-the-future-of-FMCG-chaos---ML_XGBOOST_RANDFOREST"
-                            target="_blank" class="btn mx-1 m-top">Github</a>
+                            target="_blank" class="btn">Github</a>
                     </div>
                 </div>
-                <div class="project-right">
-                    <img src="{% static 'images/Screenshot 2026-02-13 205241.png'%}" alt="SalesVortex">
-                </div>
+                <img src="{% static 'images/Screenshot 2026-02-13 205241.png'%}" alt="SalesVortex" class="project-img">
             </div>
 
             <div class="project-card tilt-card">
-                <div class="project-left">
+                <div class="project-info">
                     <h1 class="t-white poppins">TrafficSight YOLO</h1>
-                    <p class="t-white poppins">A real-time road vehicle detection system that identifies vehicles in
-                        video streams using the YOLOv8 architecture...</p>
+                    <p class="t-white poppins">Real-time road vehicle detection using YOLOv8 architecture.</p>
                     <div class="button">
                         <a href="https://github.com/ankushsingh003/Road-Vehicle-Detection-YOLOv8-or-TrafficSight-YOLO_"
-                            target="_blank" class="btn mx-1 m-top">Github</a>
+                            target="_blank" class="btn">Github</a>
                     </div>
                 </div>
-                <div class="project-right">
-                    <img src="{% static 'images/Screenshot 2026-02-13 205241 (1).png'%}" alt="TrafficSight">
-                </div>
+                <img src="{% static 'images/Screenshot 2026-02-13 205241 (1).png'%}" alt="TrafficSight"
+                    class="project-img">
             </div>
 
             <div class="project-card tilt-card">
-                <div class="project-left">
+                <div class="project-info">
                     <h1 class="t-white poppins">ProHire AI</h1>
-                    <p class="t-white poppins">A cutting-edge GenAI-powered platform designed to simulate realistic
-                        technical interviews...</p>
+                    <p class="t-white poppins">GenAI-powered platform for realistic technical interview simulation.</p>
                     <div class="button">
                         <a href="https://github.com/ankushsingh003/ProHire-AI-AUTOGEN_BASED_Interview_career_assistant_GENAI_agent-"
-                            target="_blank" class="btn mx-1 m-top">Github</a>
+                            target="_blank" class="btn">Github</a>
                     </div>
                 </div>
-                <div class="project-right">
-                    <img src="{% static 'images/Screenshot 2026-02-13 215504.png'%}" alt="ProHire">
-                </div>
+                <img src="{% static 'images/Screenshot 2026-02-13 215504.png'%}" alt="ProHire" class="project-img">
             </div>
 
             <div class="project-card tilt-card">
-                <div class="project-left">
+                <div class="project-info">
                     <h1 class="t-white poppins">Glitch in the matrix</h1>
-                    <p class="t-white poppins">Binary image classifier that distinguishes between real-world images and
-                        computer-generated matrices...</p>
+                    <p class="t-white poppins">Binary image classifier distinguishing real-world vs computer-generated.
+                    </p>
                     <div class="button">
                         <a href="https://github.com/ankushsingh003/glitch-in-the-matrix-ResNet_ImageNet_Based-ImageClassification"
-                            target="_blank" class="btn mx-1 m-top">Github</a>
+                            target="_blank" class="btn">Github</a>
                     </div>
                 </div>
-                <div class="project-right">
-                    <img src="{% static 'images/ChatGPT Image Feb 13, 2026, 10_09_14 PM.png'%}" alt="Matrix Classifier">
-                </div>
+                <img src="{% static 'images/ChatGPT Image Feb 13, 2026, 10_09_14 PM.png'%}" alt="Matrix Classifier"
+                    class="project-img">
             </div>
 
             <div class="project-card tilt-card">
-                <div class="project-left">
+                <div class="project-info">
                     <h1 class="t-white poppins">Amazon ML Challenge</h1>
-                    <p class="t-white poppins">Predictive modeling for large-scale e-commerce datasets targeting product
-                        categorization and sales trends...</p>
+                    <p class="t-white poppins">Large-scale e-commerce predictive modeling for categorization and trends.
+                    </p>
                     <div class="button">
                         <a href="https://github.com/ankushsingh003/AMAZON_ML_CHALLENGE" target="_blank"
-                            class="btn mx-1 m-top">Github</a>
+                            class="btn">Github</a>
                     </div>
                 </div>
-                <div class="project-right">
-                    <img src="{% static 'images/Screenshot 2026-02-13 215504.png'%}" alt="Amazon Challenge">
-                </div>
+                <img src="{% static 'images/Screenshot 2026-02-13 215504.png'%}" alt="Amazon Challenge"
+                    class="project-img">
             </div>
         </div>
     </section>
