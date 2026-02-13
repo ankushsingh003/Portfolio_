@@ -13,11 +13,9 @@
 </head>
 
 <body>
-    <!-- <h1>HEY THERE</h1>
-    <img src="{% static 'images/Screenshot 2026-02-13 205241.png'%}" alt=""> -->
-
-    <!-- navbar -->
-    <nav id="navbar" class="flex s-around bg-color">
+    <canvas id="snow-canvas"></canvas>
+    <!-- Navbar section -->
+    <nav class="navbar flex items-center f-white s-between p-1 px-4 sticky-top">
         <div class="left-nav">
             <h2 class="t-white">PORTFOLIO</h2>
         </div>
@@ -236,6 +234,7 @@
                 Error 404 Not Found
             </span></p>
     </footer>
+    <script src="{% static 'js/snow.js' %}"></script>
 </body>
 
 </html>
