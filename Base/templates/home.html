@@ -15,16 +15,16 @@
 <body>
     <canvas id="snow-canvas"></canvas>
     <!-- Navbar section -->
-    <nav class="navbar flex items-center f-white s-between p-1 px-4 sticky-top">
+    <nav class="navbar sticky-top">
         <div class="left-nav">
-            <h2 class="t-white">PORTFOLIO</h2>
+            <h2>PORTFOLIO</h2>
         </div>
         <div class="right-nav">
-            <li><a href="#home" class="t-white-roboto">HOME<i class="fa-solid fa-house"></i></a></li>
-            <li><a href="#about" class="t-white-roboto">ABOUT<i class="fa-solid fa-user"></i></a></li>
-            <li><a href="#skills" class="t-white-roboto">SKILLS<i class="fa-solid fa-code"></i></a></li>
-            <li><a href="#projects" class="t-white-roboto">PROJECTS<i class="fa-solid fa-project-diagrams"></i></a></li>
-            <li><a href="#contact" class="t-white-roboto">CONTACT<i class="fa-solid fa-envelope"></i></a></li>
+            <li><a href="#home">HOME<i class="fa-solid fa-house"></i></a></li>
+            <li><a href="#about">ABOUT<i class="fa-solid fa-user"></i></a></li>
+            <li><a href="#skills">SKILLS<i class="fa-solid fa-code"></i></a></li>
+            <li><a href="#projects">PROJECTS<i class="fa-solid fa-project-diagrams"></i></a></li>
+            <li><a href="#contact">CONTACT<i class="fa-solid fa-envelope"></i></a></li>
         </div>
     </nav>
     <!-- home section -->
@@ -86,31 +86,31 @@
         <div class="skills-flex-container flex s-around items-center">
             <!-- Left Skills -->
             <div class="skills-column skills-left flex f-col items-center">
-                <div class="skill-box poppins"><i class="fa-brands fa-python color-python"></i> Core Python <span
+                <div class="skill-box poppins tilt-card"><i class="fa-brands fa-python color-python"></i> Core Python
+                    <span class="skill-percent">90%</span></div>
+                <div class="skill-box poppins tilt-card"><i class="fa-solid fa-brain color-dl"></i> Deep Learning <span
                         class="skill-percent">90%</span></div>
-                <div class="skill-box poppins"><i class="fa-solid fa-brain color-dl"></i> Deep Learning <span
-                        class="skill-percent">90%</span></div>
-                <div class="skill-box poppins"><i class="fa-solid fa-gears color-tf"></i> Tensorflow <span
+                <div class="skill-box poppins tilt-card"><i class="fa-solid fa-gears color-tf"></i> Tensorflow <span
                         class="skill-percent">85%</span></div>
-                <div class="skill-box poppins"><i class="fa-solid fa-language color-nlp"></i> NLP <span
+                <div class="skill-box poppins tilt-card"><i class="fa-solid fa-language color-nlp"></i> NLP <span
                         class="skill-percent">95%</span></div>
-                <div class="skill-box poppins"><i class="fa-solid fa-vial color-mlops"></i> MLOPS <span
+                <div class="skill-box poppins tilt-card"><i class="fa-solid fa-vial color-mlops"></i> MLOPS <span
                         class="skill-percent">85%</span></div>
             </div>
 
             <!-- Right Skills -->
             <div class="skills-column skills-right flex f-col items-center">
-                <div class="skill-box poppins"><i class="fa-solid fa-eye color-cv"></i> Computer Vision <span
+                <div class="skill-box poppins tilt-card"><i class="fa-solid fa-eye color-cv"></i> Computer Vision <span
                         class="skill-percent">90%</span></div>
-                <div class="skill-box poppins"><i class="fa-solid fa-robot color-ai"></i> Agentic AI <span
+                <div class="skill-box poppins tilt-card"><i class="fa-solid fa-robot color-ai"></i> Agentic AI <span
                         class="skill-percent">85%</span></div>
-                <div class="skill-box poppins"><i class="fa-solid fa-server color-django"></i> Django <span
+                <div class="skill-box poppins tilt-card"><i class="fa-solid fa-server color-django"></i> Django <span
                         class="skill-percent">80%</span></div>
-                <div class="skill-box poppins"><i class="fa-brands fa-git-alt color-git"></i> Git <span
+                <div class="skill-box poppins tilt-card"><i class="fa-brands fa-git-alt color-git"></i> Git <span
                         class="skill-percent">90%</span></div>
-                <div class="skill-box poppins"><i class="fa-brands fa-docker color-docker"></i> Docker <span
+                <div class="skill-box poppins tilt-card"><i class="fa-brands fa-docker color-docker"></i> Docker <span
                         class="skill-percent">90%</span></div>
-                <div class="skill-box poppins"><i class="fa-solid fa-database color-sql"></i> SQL <span
+                <div class="skill-box poppins tilt-card"><i class="fa-solid fa-database color-sql"></i> SQL <span
                         class="skill-percent">90%</span></div>
             </div>
         </div>
@@ -120,58 +120,79 @@
     <section id="projects">
         <h1 class="t-centre my-2 t-white f-2">Projects</h1>
         <div class="project-container flex s-around">
-            <div class="project-left">
-                <h1 class="t-white poppins">SalesVortex-Predicting-The-Future-Of-FMCG-chaos</h1>
-                <p class="t-white poppins">SalesVortex is a comprehensive sales forecasting platform designed to predict
-                    future sales of Fast-Moving Consumer Goods (FMCG) products using advanced machine learning
-                    techniques. The project addresses the inherent volatility and complexity of the FMCG market by
-                    integrating multiple data sources and employing sophisticated time-series analysis models.</p>
-                <div class="button">
-                    <a href="https://github.com/ankushsingh003/SalesVortex---Predicting-the-future-of-FMCG-chaos---ML_XGBOOST_RANDFOREST"
-                        target="_blank" class="btn mx-1 m-top">Github</a>
+            <div class="project-card tilt-card">
+                <div class="project-left">
+                    <h1 class="t-white poppins">SalesVortex</h1>
+                    <p class="t-white poppins">This system uses machine learning to predict sales for FMCG companies
+                        using
+                        advanced forecasting techniques...</p>
+                    <div class="button">
+                        <a href="https://github.com/ankushsingh003/SalesVortex-Predicting-The-Future-Of-FMCG-chaos"
+                            target="_blank" class="btn mx-1 m-top">Github</a>
+                    </div>
                 </div>
-            </div>
-            <div class="project-left">
-                <h1 class="t-white poppins">glitch-in-the-matrix</h1>
-                <p class="t-white poppins">This project implements a binary image classifier to distinguish between
-                    "Fake" and "Real" images using a ResNet model..</p>
-                <div class="button">
-                    <a href="https://github.com/ankushsingh003/glitch-in-the-matrix-ResNet_ImageNet_Based-ImageClassification"
-                        target="_blank" class="btn mx-1 m-top">Github</a>
+                <div class="project-right">
+                    <img src="{% static 'images/Screenshot 2026-02-13 223521.png'%}" alt="SalesVortex">
                 </div>
             </div>
 
-            <!-- New Projects -->
-            <div class="project-left">
-                <h1 class="t-white poppins">TrafficSight YOLO</h1>
-                <p class="t-white poppins">An advanced road vehicle detection system powered by YOLOv8. Designed for
-                    real-time traffic monitoring and safety analysis, this project achieves high accuracy in identifying
-                    various vehicle types in diverse road conditions.</p>
-                <div class="button">
-                    <a href="https://github.com/ankushsingh003/Road-Vehicle-Detection-YOLOv8-or-TrafficSight-YOLO_"
-                        target="_blank" class="btn mx-1 m-top">Github</a>
+            <div class="project-card tilt-card">
+                <div class="project-left">
+                    <h1 class="t-white poppins">TrafficSight YOLO</h1>
+                    <p class="t-white poppins">A real-time road vehicle detection system that identifies vehicles in
+                        video streams using the YOLOv8 architecture...</p>
+                    <div class="button">
+                        <a href="https://github.com/ankushsingh003/SalesVortex-Predicting-The-Future-Of-FMCG-chaos"
+                            target="_blank" class="btn mx-1 m-top">Github</a>
+                    </div>
+                </div>
+                <div class="project-right">
+                    <img src="{% static 'images/Screenshot 2026-02-13 224422.png'%}" alt="TrafficSight">
                 </div>
             </div>
 
-            <div class="project-left">
-                <h1 class="t-white poppins">ProHire AI</h1>
-                <p class="t-white poppins">A cutting-edge GenAI agent built using AutoGen. This career assistant acts as
-                    an interview coach, providing personalized feedback and simulated interview experiences to help
-                    professionals master their hiring process.</p>
-                <div class="button">
-                    <a href="https://github.com/ankushsingh003/ProHire-AI-AUTOGEN_BASED_Interview_career_assistant_GENAI_agent-"
-                        target="_blank" class="btn mx-1 m-top">Github</a>
+            <div class="project-card tilt-card">
+                <div class="project-left">
+                    <h1 class="t-white poppins">ProHire AI</h1>
+                    <p class="t-white poppins">A cutting-edge GenAI-powered platform designed to simulate realistic
+                        technical interviews...</p>
+                    <div class="button">
+                        <a href="https://github.com/ankushsingh003/SalesVortex-Predicting-The-Future-Of-FMCG-chaos"
+                            target="_blank" class="btn mx-1 m-top">Github</a>
+                    </div>
+                </div>
+                <div class="project-right">
+                    <img src="{% static 'images/Screenshot 2026-02-13 234251.png'%}" alt="ProHire">
                 </div>
             </div>
 
-            <div class="project-left">
-                <h1 class="t-white poppins">Amazon ML Challenge</h1>
-                <p class="t-white poppins">The repository for the Amazon ML Challenge, featuring innovative solutions to
-                    complex machine learning problems. This project showcases advanced data science techniques and
-                    predictive modeling applied to large-scale datasets.</p>
-                <div class="button">
-                    <a href="https://github.com/ankushsingh003/AMAZON_ML_CHALLENGE" target="_blank"
-                        class="btn mx-1 m-top">Github</a>
+            <div class="project-card tilt-card">
+                <div class="project-left">
+                    <h1 class="t-white poppins">Glitch in the matrix</h1>
+                    <p class="t-white poppins">Binary image classifier that distinguishes between real-world images and
+                        computer-generated matrices...</p>
+                    <div class="button">
+                        <a href="https://github.com/ankushsingh003/git-in-the-matrix" target="_blank"
+                            class="btn mx-1 m-top">Github</a>
+                    </div>
+                </div>
+                <div class="project-right">
+                    <img src="{% static 'images/Screenshot 2026-02-13 234451.png'%}" alt="Matrix Classifier">
+                </div>
+            </div>
+
+            <div class="project-card tilt-card">
+                <div class="project-left">
+                    <h1 class="t-white poppins">Amazon ML Challenge</h1>
+                    <p class="t-white poppins">Predictive modeling for large-scale e-commerce datasets targeting product
+                        categorization and sales trends...</p>
+                    <div class="button">
+                        <a href="https://github.com/ankushsingh003/SalesVortex-Predicting-The-Future-Of-FMCG-chaos"
+                            target="_blank" class="btn mx-1 m-top">Github</a>
+                    </div>
+                </div>
+                <div class="project-right">
+                    <img src="{% static 'images/Screenshot 2026-02-14 011241.png'%}" alt="Amazon Challenge">
                 </div>
             </div>
         </div>
@@ -235,6 +256,8 @@
             </span></p>
     </footer>
     <script src="{% static 'js/snow.js' %}"></script>
+    <script src="{% static 'js/navbar.js' %}"></script>
+    <script src="{% static 'js/tilt.js' %}"></script>
 </body>
 
 </html>
