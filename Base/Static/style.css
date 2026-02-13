@@ -130,7 +130,7 @@ body {
 
 .about-left img {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
     height: auto;
     border-radius: 1rem;
     object-fit: cover;
@@ -196,6 +196,51 @@ body {
     color: #da7fa8;
     font-weight: bold;
     font-size: 0.9rem;
+}
+
+/* Skill Brand Colors */
+.color-python {
+    color: #3776AB !important;
+}
+
+.color-tf {
+    color: #FF6F00 !important;
+}
+
+.color-django {
+    color: #092E20 !important;
+}
+
+.color-git {
+    color: #F05032 !important;
+}
+
+.color-docker {
+    color: #2496ED !important;
+}
+
+.color-sql {
+    color: #4479A1 !important;
+}
+
+.color-dl {
+    color: #a29bfe !important;
+}
+
+.color-nlp {
+    color: #00cec9 !important;
+}
+
+.color-mlops {
+    color: #6c5ce7 !important;
+}
+
+.color-cv {
+    color: #74b9ff !important;
+}
+
+.color-ai {
+    color: #55efc4 !important;
 }
 
 .skill-center {
