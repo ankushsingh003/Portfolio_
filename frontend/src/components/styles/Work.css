@@ -71,3 +71,53 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Career Timeline Restoration */
+.career-container {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.career-item {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.career-date {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.career-details h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.career-details h4 {
+  font-size: 1.1rem;
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.career-details p {
+  line-height: 1.7;
+  opacity: 0.8;
+  max-width: 800px;
+}
+
+@media (max-width: 1024px) {
+  .career-item {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
