@@ -1,12 +1,27 @@
-import React, { Suspense, useRef, useMemo } from 'react';
+import React, { Suspense, useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, Environment, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
+import gsap from 'gsap';
 
 const Model = () => {
   const { scene } = useGLTF('https://models.readyplayer.me/64859065961d68019053356e.glb');
   const group = useRef();
-  const { mouse, viewport } = useThree();
+  const { mouse } = useThree();
+
+  // Entrance Animation
+  useEffect(() => {
+    if (group.current) {
+      gsap.from(group.current.scale, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 2,
+        ease: 'power4.out',
+        delay: 1
+      });
+    }
+  }, []);
 
   // Find the head and neck bones for tracking
   const nodes = useMemo(() => {
