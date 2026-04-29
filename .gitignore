@@ -1,0 +1,21 @@
+# Environments
+venv/
+.env
+__pycache__/
+*.pyc
+
+# Node modules
+node_modules/
+dist/
+.vite/
+
+# Database
+*.sqlite3
+*.db
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
