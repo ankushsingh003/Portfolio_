@@ -4,35 +4,39 @@ import './styles/Work.css';
 const Work = () => {
   const projects = [
     {
-      title: "SalesVortex",
-      description: "Advanced sales forecasting using Deep Learning models.",
-      tags: ["Python", "PyTorch", "Django"]
+      title: "Deepchain",
+      description: "A decentralized platform for collaborative AI model training. Uses blockchain to ensure data privacy and model integrity across distributed networks.",
+      tags: ["Python", "PyTorch", "Solidity", "Web3.js"],
+      link: "https://github.com/ankushsingh003/deepchain"
     },
     {
-      title: "TrafficSight YOLO",
-      description: "Real-time traffic object detection and analysis system.",
-      tags: ["YOLOv8", "Computer Vision", "C++"]
+      title: "Safe-shop",
+      description: "An AI-enhanced e-commerce experience with intelligent product recommendations, real-time inventory tracking, and secure payment processing.",
+      tags: ["React", "FastAPI", "PostgreSQL", "TensorFlow"],
+      link: "https://github.com/ankushsingh003/safe-shop"
     },
     {
-      title: "ProHire AI",
-      description: "Intelligent recruitment agent using LLMs for resume screening.",
-      tags: ["OpenAI", "FastAPI", "React"]
+      title: "Botocop",
+      description: "An automated security agent that audits code quality and detects vulnerabilities in GitHub repositories using specialized LLMs.",
+      tags: ["Agentic AI", "NLP", "Node.js", "GitHub API"],
+      link: "https://github.com/ankushsingh003/botocop"
     },
     {
-      title: "DeepChain",
-      description: "Blockchain-integrated decentralized model training platform.",
-      tags: ["Solidity", "Web3", "Python"]
+      title: "Aegis Hedge Systems",
+      description: "Sophisticated algorithmic trading and portfolio optimization system using Reinforcement Learning and real-time market data analysis.",
+      tags: ["ML", "Quant Finance", "Docker", "AWS"],
+      link: "https://github.com/ankushsingh003/Aegis-Hedge-Systems"
     }
   ];
 
   return (
     <section className="section-container" id="work">
       <h2 style={{ fontSize: '1rem', color: 'var(--accent)', marginBottom: '2rem', letterSpacing: '0.2em' }}>
-        SELECTED WORK
+        SELECTED PROJECTS
       </h2>
       <div className="work-grid">
         {projects.map((project, index) => (
-          <div key={index} className="work-card">
+          <a key={index} href={project.link} target="_blank" rel="noopener noreferrer" className="work-card">
             <div className="work-image-placeholder"></div>
             <div className="work-info">
               <h3>{project.title}</h3>
@@ -43,7 +47,7 @@ const Work = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>
