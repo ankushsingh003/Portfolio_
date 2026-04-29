@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MainContainer from './components/MainContainer';
 import Landing from './components/Landing';
+import WhatIDo from './components/WhatIDo';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -44,6 +45,7 @@ const App = () => {
       <Navbar />
       <MainContainer>
         <Landing />
+        <WhatIDo />
         
         {/* About Section (Placeholder) */}
         <section className="section-container" id="about">
