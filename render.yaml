@@ -1,0 +1,20 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: portfolio-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+
+  # Frontend Static Site
+  - type: static
+    name: portfolio-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    publishPath: ./frontend/dist
+    envVars:
+      - key: NODE_VERSION
+        value: 18.0.0
