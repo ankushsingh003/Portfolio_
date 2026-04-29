@@ -1,13 +1,37 @@
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { useGLTF, OrbitControls, Environment, ContactShadows } from '@react-three/drei';
+import React, { Suspense, useRef, useMemo } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { useGLTF, Environment, ContactShadows } from '@react-three/drei';
+import * as THREE from 'three';
 
-// A high-quality public character model (Placeholder)
 const Model = () => {
-  // Using a common high-quality glb model for demonstration
   const { scene } = useGLTF('https://models.readyplayer.me/64859065961d68019053356e.glb');
-  
-  return <primitive object={scene} scale={2.5} position={[0, -2.5, 0]} />;
+  const group = useRef();
+  const { mouse, viewport } = useThree();
+
+  // Find the head and neck bones for tracking
+  const nodes = useMemo(() => {
+    const head = scene.getObjectByName('Head');
+    const neck = scene.getObjectByName('Neck');
+    return { head, neck };
+  }, [scene]);
+
+  useFrame((state) => {
+    if (nodes.head && nodes.neck) {
+      // Calculate target rotation based on mouse position
+      // We map mouse (-1 to 1) to a reasonable rotation range (e.g., -0.5 to 0.5 radians)
+      const targetRotationX = mouse.y * 0.5;
+      const targetRotationY = mouse.x * 0.5;
+
+      // Smoothly interpolate (lerp) to the target rotation for a natural feel
+      nodes.head.rotation.x = THREE.MathUtils.lerp(nodes.head.rotation.x, -targetRotationX, 0.1);
+      nodes.head.rotation.y = THREE.MathUtils.lerp(nodes.head.rotation.y, targetRotationY, 0.1);
+      
+      nodes.neck.rotation.x = THREE.MathUtils.lerp(nodes.neck.rotation.x, -targetRotationX * 0.3, 0.1);
+      nodes.neck.rotation.y = THREE.MathUtils.lerp(nodes.neck.rotation.y, targetRotationY * 0.3, 0.1);
+    }
+  });
+
+  return <primitive ref={group} object={scene} scale={2.5} position={[0, -2.5, 0]} />;
 };
 
 const Character = () => {
@@ -38,9 +62,6 @@ const Character = () => {
             far={4.5} 
           />
         </Suspense>
-        
-        {/* We disable controls so it stays fixed in the design, but you can enable them for testing */}
-        {/* <OrbitControls enableZoom={false} /> */}
       </Canvas>
     </div>
   );
