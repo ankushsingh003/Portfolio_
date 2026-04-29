@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import Character from './Character';
 
 const Landing = () => {
   const titleRef = useRef(null);
@@ -15,8 +16,9 @@ const Landing = () => {
   }, []);
 
   return (
-    <section className="section-container" id="home">
-      <div ref={titleRef}>
+    <section className="section-container" id="home" style={{ overflow: 'visible' }}>
+      <Character />
+      <div ref={titleRef} style={{ position: 'relative', zIndex: 10 }}>
         <h1 className="huge-title">
           Ankush<br />Singh
         </h1>
