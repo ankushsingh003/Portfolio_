@@ -17,17 +17,17 @@ const Landing = () => {
 
   return (
     <section className="section-container" id="home" style={{ overflow: 'visible', position: 'relative' }}>
-      {/* 1. The 3D Character (Moved to the back with zIndex: 1) */}
+      {/* 1. The 3D Character (Background Layer) */}
       <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}>
         <Character />
       </div>
 
-      {/* 2. Your Name (Moved to the absolute front with zIndex: 10) */}
+      {/* 2. Your Name (Foreground Layer) */}
       <div ref={titleRef} style={{ position: 'relative', zIndex: 10, pointerEvents: 'none' }}>
-        <h1 className="huge-title" style={{ color: '#ffffff', opacity: 1, textShadow: '0 0 20px rgba(0,0,0,0.5)' }}>
+        <h1 className="huge-title">
           Ankush<br />Singh
         </h1>
-        <p className="subtitle" style={{ color: '#ffffff', opacity: 0.8 }}>
+        <p className="subtitle">
           Machine Learning Engineer specializing in Deep Learning, 
           Computer Vision, and Agentic AI.
         </p>
