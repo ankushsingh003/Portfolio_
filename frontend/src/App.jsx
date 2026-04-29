@@ -1,108 +1,207 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { API_URL } from './config';
+
+const GITHUB_USERNAME = "ankushsingh003";
+
+const FEATURED_REPOS = [
+  "safe-shop",
+  "deepchain",
+  "botocop",
+  "Stochastic-Volatility-Indian-Equity",
+  "Aegis-Hedge-Systems"
+];
 
 const App = () => {
+  const [time, setTime] = useState(new Date());
+  const [repos, setRepos] = useState([]);
+  const [openWindows, setOpenWindows] = useState([]);
+  const [activeWindow, setActiveWindow] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // 1. Fetch all repositories on mount
   useEffect(() => {
-    console.log("Portfolio App Initialized");
+    const fetchRepos = async () => {
+      try {
+        const response = await axios.get(`https://api.github.com/users/${GITHUB_USERNAME}/repos`);
+        // Filter to only include the specific featured repositories
+        const filtered = response.data.filter(repo => 
+          FEATURED_REPOS.some(featured => repo.name.toLowerCase() === featured.toLowerCase())
+        );
+        setRepos(filtered);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching repos:", error);
+        setLoading(false);
+      }
+    };
+    fetchRepos();
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
   }, []);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    number: '',
-    message: ''
-  });
-  const [status, setStatus] = useState({ type: '', message: '' });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const openWindow = (title, type, data = null) => {
+    if (!openWindows.find(w => w.title === title)) {
+      setOpenWindows([...openWindows, { title, type, data, id: Date.now() }]);
+    }
+    setActiveWindow(title);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus({ type: 'info', message: 'Sending...' });
-    try {
-      const response = await axios.post(`${API_URL}/api/contact`, formData);
-      setStatus({ type: 'success', message: response.data.message });
-      setFormData({ name: '', email: '', number: '', message: '' });
-    } catch (error) {
-      setStatus({ type: 'error', message: 'Failed to send. Please try again.' });
-    }
+  const closeWindow = (title) => {
+    setOpenWindows(openWindows.filter(w => w.title !== title));
+    if (activeWindow === title) setActiveWindow(null);
   };
 
   return (
-    <div className="app">
-      <div className="aurora-bg"></div>
-      
-      <nav>
-        <div className="container">
-          <div className="logo">ANKUSH SINGH</div>
-          <ul className="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+    <div className="desktop">
+      <div className="glass-overlay"></div>
+
+      {/* Menu Bar */}
+      <div className="menu-bar">
+        <div className="menu-left">
+          <span style={{ fontSize: '18px', padding: '0 5px' }}></span>
+          <span style={{ fontWeight: 700 }}>Finder</span>
+          <span>File</span>
+          <span>Edit</span>
+          <span>View</span>
+          <span>Go</span>
         </div>
-      </nav>
+        <div className="menu-right">
+          <span>Wi-Fi</span>
+          <span>100%</span>
+          <span>{time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+        </div>
+      </div>
 
-      <main>
-        <section id="home">
-          <div className="container">
-            <div className="hero-content">
-              <h6 style={{ color: 'var(--primary)', marginBottom: '1rem', fontWeight: 'bold' }}>HI, I'M</h6>
-              <h1>Ankush Singh</h1>
-              <h2 style={{ fontSize: '2.5rem', opacity: 0.8, marginBottom: '2rem' }}>ML ENGINEER</h2>
-              <p>Specializing in Deep Learning, Computer Vision, and Agentic AI.</p>
-              <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-                <a href="#contact" className="btn btn-primary">Let's Connect</a>
-                <a href="#projects" className="btn btn-outline">View Projects</a>
-              </div>
+      {/* Desktop Content */}
+      <div className="desktop-icons">
+        {loading ? (
+          <div style={{ color: 'white', padding: '20px' }}>Loading Projects...</div>
+        ) : (
+          repos.map(repo => (
+            <div key={repo.id} className="desktop-icon" onDoubleClick={() => openWindow(repo.name, "folder", repo)}>
+              <div style={{ fontSize: '45px' }}>📂</div>
+              <span style={{ maxWidth: '100px', overflow: 'hidden', textOverflow: 'ellipsis' }}>{repo.name}</span>
             </div>
-          </div>
-        </section>
+          ))
+        )}
+        <div className="desktop-icon" onDoubleClick={() => openWindow("About Me", "file")}>
+          <div style={{ fontSize: '45px' }}>📄</div>
+          <span>About Me.pdf</span>
+        </div>
+      </div>
 
-        <section id="about">
-          <div className="container">
-            <h2 className="section-title">About Me</h2>
-            <div className="glass-card">
-               <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
-                  I'm a passionate Machine Learning Engineer specializing in Deep Learning, Computer Vision, and Natural Language Processing.
-               </p>
-            </div>
-          </div>
-        </section>
+      {/* Windows */}
+      {openWindows.map((win) => (
+        <MacWindow 
+          key={win.id}
+          window={win}
+          isActive={activeWindow === win.title}
+          onClose={() => closeWindow(win.title)}
+          onFocus={() => setActiveWindow(win.title)}
+          openWindow={openWindow}
+        />
+      ))}
 
-        <section id="contact">
-          <div className="container">
-            <h2 className="section-title">Contact</h2>
-            <div className="glass-card" style={{ maxWidth: '600px', margin: '0 auto' }}>
-              <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label>Name</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
-                  <label>Email</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
-                  <label>Message</label>
-                  <textarea name="message" value={formData.message} onChange={handleChange} required rows="4"></textarea>
-                </div>
-                <button type="submit" className="btn btn-primary">Send Message</button>
-                {status.message && <p style={{ marginTop: '1rem' }}>{status.message}</p>}
-              </form>
-            </div>
-          </div>
-        </section>
-      </main>
+      {/* Dock */}
+      <div className="dock-container">
+        <div className="dock">
+          <div className="dock-icon" style={{ background: '#4A90E2' }}>🧭</div>
+          <div className="dock-icon" style={{ background: '#000' }} onClick={() => openWindow("Terminal", "terminal")}>{">_"}</div>
+          <div className="dock-icon" style={{ background: '#D0021B' }}>✉️</div>
+          <div className="dock-icon" style={{ background: '#F5A623' }} onClick={() => openWindow("About Me", "file")}>👤</div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-      <footer style={{ padding: '4rem 0', textAlign: 'center' }}>
-        <p>© 2026 Ankush Singh</p>
-      </footer>
+const MacWindow = ({ window, onClose, onFocus, isActive, openWindow }) => {
+  const [files, setFiles] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [code, setCode] = useState("");
+
+  // 2. Fetch files inside a folder
+  useEffect(() => {
+    if (window.type === "folder" && window.data) {
+      setLoading(true);
+      axios.get(`https://api.github.com/repos/${GITHUB_USERNAME}/${window.data.name}/contents`)
+        .then(res => {
+          setFiles(res.data);
+          setLoading(false);
+        })
+        .catch(err => setLoading(false));
+    }
+    
+    // 3. Fetch file content
+    if (window.type === "code" && window.data) {
+      setLoading(true);
+      axios.get(window.data.download_url)
+        .then(res => {
+          setCode(typeof res.data === 'object' ? JSON.stringify(res.data, null, 2) : res.data);
+          setLoading(false);
+        })
+        .catch(err => setLoading(false));
+    }
+  }, [window]);
+
+  return (
+    <div 
+      className={`window ${window.type === 'code' ? 'code-window' : ''}`}
+      style={{ 
+        zIndex: isActive ? 200 : 100,
+        width: window.type === 'code' ? '700px' : '800px',
+        height: window.type === 'code' ? '600px' : '500px',
+        left: window.type === 'code' ? '300px' : '200px',
+        top: window.type === 'code' ? '150px' : '100px'
+      }}
+      onClick={onFocus}
+    >
+      <div className="window-header">
+        <div className="window-controls">
+          <div className="control close" onClick={onClose}></div>
+          <div className="control minimize"></div>
+          <div className="control maximize"></div>
+        </div>
+        <div className="window-title">{window.title}</div>
+      </div>
+      <div className="window-body">
+        {window.type === "folder" && (
+          <div className="sidebar">
+            <div className="sidebar-item active">All Files</div>
+            <div className="sidebar-item">Branches</div>
+            <div className="sidebar-item">Commits</div>
+          </div>
+        )}
+        <div className="content-area" style={{ color: 'white', padding: '20px' }}>
+           {loading ? (
+             <div>Loading...</div>
+           ) : window.type === "folder" ? (
+             <div className="file-grid">
+               {files.map((file, i) => (
+                 <div key={i} className="file-item" onDoubleClick={() => openWindow(file.name, "code", file)}>
+                   <div style={{ fontSize: '30px' }}>{file.type === 'dir' ? '📂' : '📄'}</div>
+                   <span className="file-name">{file.name}</span>
+                 </div>
+               ))}
+             </div>
+           ) : window.type === "code" ? (
+             <pre style={{ 
+               fontFamily: 'monospace', 
+               fontSize: '13px', 
+               overflow: 'auto', 
+               height: '100%',
+               color: '#d4d4d4'
+             }}>
+               <code>{code}</code>
+             </pre>
+           ) : (
+             <div style={{ color: '#0f0', fontFamily: 'monospace' }}>
+                <p>ankush@macbook ~ % system active</p>
+                <p>Uvicorn running on http://127.0.0.1:8000</p>
+             </div>
+           )}
+        </div>
+      </div>
     </div>
   );
 };
