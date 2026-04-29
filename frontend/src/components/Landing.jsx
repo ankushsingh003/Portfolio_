@@ -17,7 +17,7 @@ const Landing = () => {
 
   return (
     <section className="section-container" id="home" style={{ overflow: 'visible' }}>
-      <Character />
+      {/* <Character /> */}
       <div ref={titleRef} style={{ position: 'relative', zIndex: 10 }}>
         <h1 className="huge-title">
           Ankush<br />Singh

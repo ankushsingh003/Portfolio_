@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const Particles = ({ count = 1000 }) => {
+const Particles = ({ count = 100 }) => {
   const points = useRef();
 
   // Create random positions for particles
