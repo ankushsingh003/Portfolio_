@@ -23,9 +23,12 @@ const App = () => {
     const fetchRepos = async () => {
       try {
         const response = await axios.get(`https://api.github.com/users/${GITHUB_USERNAME}/repos`);
-        // Filter to only include the specific featured repositories
+        // More flexible matching (handles case differences and partial matches)
         const filtered = response.data.filter(repo => 
-          FEATURED_REPOS.some(featured => repo.name.toLowerCase() === featured.toLowerCase())
+          FEATURED_REPOS.some(featured => 
+            repo.name.toLowerCase().includes(featured.toLowerCase()) || 
+            featured.toLowerCase().includes(repo.name.toLowerCase())
+          )
         );
         setRepos(filtered);
         setLoading(false);
@@ -80,7 +83,7 @@ const App = () => {
           repos.map(repo => (
             <div key={repo.id} className="desktop-icon" onDoubleClick={() => openWindow(repo.name, "folder", repo)}>
               <div style={{ fontSize: '45px' }}>📂</div>
-              <span style={{ maxWidth: '100px', overflow: 'hidden', textOverflow: 'ellipsis' }}>{repo.name}</span>
+              <span>{repo.name}</span>
             </div>
           ))
         )}
