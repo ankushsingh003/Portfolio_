@@ -1,42 +1,37 @@
-import React, { Suspense, useRef, useEffect, useMemo } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Environment, ContactShadows, useGLTF } from '@react-three/drei';
+import React, { Suspense, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Float, MeshDistortMaterial, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
-import gsap from 'gsap';
 
-const Model = () => {
-  const group = useRef();
-  const { mouse } = useThree();
+const GlassObject = () => {
+  const mesh = useRef();
   
-  // Use a high-compatibility casual human model
-  const { scene } = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/man/model.gltf');
-
-  useEffect(() => {
-    if (group.current) {
-      gsap.from(group.current.position, {
-        y: -10,
-        duration: 1.5,
-        ease: 'power3.out'
-      });
-    }
-  }, []);
-
   useFrame((state) => {
-    if (group.current) {
-      // 1. Horizontal Movement (Sliding along the X-axis)
-      const targetX = mouse.x * 2; // Adjust the '2' to increase/decrease slide range
-      group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, targetX, 0.05);
-
-      // 2. Head/Neck tracking (Looking at the cursor)
-      const head = group.current.getObjectByName('Head') || group.current.getObjectByName('Neck');
-      if (head) {
-        head.rotation.y = THREE.MathUtils.lerp(head.rotation.y, mouse.x * 0.6, 0.1);
-        head.rotation.x = THREE.MathUtils.lerp(head.rotation.x, -mouse.y * 0.3, 0.1);
-      }
+    const { mouse } = state;
+    if (mesh.current) {
+      // Horizontal Slide
+      const targetX = mouse.x * 3;
+      mesh.current.position.x = THREE.MathUtils.lerp(mesh.current.position.x, targetX, 0.05);
+      
+      // Rotation follow
+      mesh.current.rotation.x = THREE.MathUtils.lerp(mesh.current.rotation.x, -mouse.y * 0.5, 0.1);
+      mesh.current.rotation.y = THREE.MathUtils.lerp(mesh.current.rotation.y, mouse.x * 0.5, 0.1);
     }
   });
 
-  return <primitive ref={group} object={scene} scale={2} position={[0, -2, 0]} />;
+  return (
+    <mesh ref={mesh} scale={1.5}>
+      <torusKnotGeometry args={[1, 0.3, 128, 32]} />
+      <MeshDistortMaterial 
+        color="#da7fa8" 
+        speed={2} 
+        distort={0.4} 
+        radius={1}
+        metalness={0.8}
+        roughness={0.2}
+      />
+    </mesh>
+  );
 };
 
 const Character = () => {
@@ -51,18 +46,14 @@ const Character = () => {
       zIndex: 5,
       pointerEvents: 'none'
     }}>
-      <Canvas 
-        camera={{ position: [0, 0, 8], fov: 40 }}
-        gl={{ antialias: true, alpha: true }}
-      >
-        <ambientLight intensity={0.7} />
+      <Canvas camera={{ position: [0, 0, 8], fov: 40 }}>
+        <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />
-        <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
-        
         <Suspense fallback={null}>
-          <Model />
-          <Environment preset="city" />
-          <ContactShadows position={[0, -2, 0]} opacity={0.4} scale={10} blur={2.5} far={4} />
+          <Float speed={2} rotationIntensity={1} floatIntensity={1}>
+            <GlassObject />
+          </Float>
+          <ContactShadows position={[0, -3, 0]} opacity={0.4} scale={10} blur={2.5} far={4} />
         </Suspense>
       </Canvas>
     </div>
