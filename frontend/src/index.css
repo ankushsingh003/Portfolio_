@@ -48,14 +48,12 @@ h1, h2, h3 {
   font-size: clamp(3rem, 15vw, 12rem);
   line-height: 0.9;
   font-weight: 700;
-  color: #ffffff !important;
-  opacity: 1 !important;
+  color: #d1d1d1;
 }
 
 .subtitle {
   font-size: clamp(1rem, 2vw, 1.5rem);
-  color: #ffffff !important;
-  opacity: 1 !important;
+  color: #d1d1d1;
   margin-top: 2rem;
   max-width: 600px;
 }
