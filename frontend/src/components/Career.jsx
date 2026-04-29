@@ -1,19 +1,19 @@
 import React from 'react';
-import './styles/Work.css'; // Reusing some common styles
+import './styles/Work.css'; // Reusing common styles
 
 const Career = () => {
   const experiences = [
     {
-      date: "2023 — PRESENT",
-      title: "ML Engineer",
-      company: "AI Innovation Lab",
-      description: "Leading the development of agentic AI workflows and fine-tuning large language models for domain-specific applications."
+      date: "JAN 2026 — MARCH 2026",
+      title: "Data Science Intern",
+      company: "Encrypta (Sidhani Technologies)",
+      description: "Built Generative AI & RAG support agents using ChromaDB with a 3-tier confidence routing system. Engineered a Chromium security extension for real-time phishing analysis and biometric-gated authorization. Deployed scalable WebSocket infrastructure via FastAPI."
     },
     {
-      date: "2021 — 2023",
-      title: "Data Scientist",
-      company: "Tech Solutions Corp",
-      description: "Developed predictive models for sales forecasting and optimized supply chain logistics using computer vision."
+      date: "FEB 2026 — APRIL 2026",
+      title: "Finance and Research Analyst Intern",
+      company: "Incline Rise",
+      description: "Conducted fundamental analysis on mid-cap equities and mutual funds using DCF modeling and NAV trend analysis. Automated daily market reporting for Nifty/Sensex movements and synthesized RBI policy signals for sectoral forecasting."
     }
   ];
 
