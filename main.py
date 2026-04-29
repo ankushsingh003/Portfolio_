@@ -25,7 +25,7 @@ Base.metadata.create_all(bind=engine)
 class ContactSchema(BaseModel):
     name: str
     email: EmailStr
-    number: str
+    number: str = ""
     message: str
 
 # FastAPI app

@@ -1,8 +1,9 @@
 fastapi
 uvicorn
 sqlalchemy
-pydantic
+pydantic[email]
 pydantic-settings
 python-multipart
 python-dotenv
 aiosqlite
+email-validator
