@@ -1,0 +1,109 @@
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.work-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.work-card:hover {
+  transform: scale(1.02);
+  border-color: var(--accent);
+}
+
+.work-image-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.work-image-placeholder::after {
+  content: 'PROJECT PREVIEW';
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  opacity: 0.2;
+}
+
+.work-info {
+  padding: 2rem;
+}
+
+.work-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.work-info p {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-bottom: 1.5rem;
+}
+
+.work-tags {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Career Timeline */
+.career-container {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.career-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.career-date {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.career-details h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.career-details h4 {
+  font-size: 1rem;
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+}
+
+.career-details p {
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+  .career-item {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

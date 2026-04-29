@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import MainContainer from './components/MainContainer';
 import Landing from './components/Landing';
 import WhatIDo from './components/WhatIDo';
+import Work from './components/Work';
+import Career from './components/Career';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -46,29 +48,10 @@ const App = () => {
       <MainContainer>
         <Landing />
         <WhatIDo />
+        <Career />
+        <Work />
         
-        {/* About Section (Placeholder) */}
-        <section className="section-container" id="about">
-          <h2 style={{ fontSize: '4rem', marginBottom: '2rem' }}>About</h2>
-          <div className="grid-2">
-            <p style={{ fontSize: '1.2rem', lineHeight: 1.6, opacity: 0.8 }}>
-              I am a passionate Machine Learning Engineer dedicated to pushing the boundaries 
-              of Artificial Intelligence. My work spans across Deep Learning, 
-              Natural Language Processing, and the emerging field of Agentic AI.
-            </p>
-            <div style={{ border: '1px solid var(--border)', height: '300px', borderRadius: '20px' }}></div>
-          </div>
-        </section>
-
-        {/* Work Section (Placeholder) */}
-        <section className="section-container" id="work">
-          <h2 style={{ fontSize: '4rem', marginBottom: '2rem' }}>Selected Work</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            {[1, 2, 3, 4].map(i => (
-              <div key={i} style={{ height: '400px', background: 'var(--glass)', borderRadius: '20px', border: '1px solid var(--border)' }}></div>
-            ))}
-          </div>
-        </section>
+        {/* Contact Section (Placeholder) */}
 
         {/* Contact Section (Placeholder) */}
         <section className="section-container" id="contact">
