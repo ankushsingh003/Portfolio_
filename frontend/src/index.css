@@ -48,6 +48,8 @@ h1, h2, h3 {
   font-size: clamp(3rem, 15vw, 12rem);
   line-height: 0.9;
   font-weight: 700;
+  color: #ffffff;
+  opacity: 1;
 }
 
 .subtitle {
