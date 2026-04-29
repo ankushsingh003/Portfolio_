@@ -61,6 +61,11 @@ def create_contact(contact: ContactSchema, db: Session = Depends(get_db)):
     db.refresh(db_contact)
     return {"message": "Thank you for contacting me! Your message has been saved."}
 
+@app.get("/admin/messages")
+def get_messages(db: Session = Depends(get_db)):
+    messages = db.query(ContactModel).all()
+    return messages
+
 @app.get("/")
 def read_root():
     return {"message": "Portfolio API is running"}
