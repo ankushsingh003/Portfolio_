@@ -6,6 +6,7 @@ import Work from './components/Work';
 import Career from './components/Career';
 import TechStack from './components/TechStack';
 import Contact from './components/Contact';
+import Background3D from './components/Background3D';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -45,6 +46,7 @@ const Navbar = () => (
 const App = () => {
   return (
     <>
+      <Background3D />
       <CustomCursor />
       <Navbar />
       <MainContainer>
