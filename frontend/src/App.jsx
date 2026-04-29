@@ -4,6 +4,8 @@ import Landing from './components/Landing';
 import WhatIDo from './components/WhatIDo';
 import Work from './components/Work';
 import Career from './components/Career';
+import TechStack from './components/TechStack';
+import Contact from './components/Contact';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -50,17 +52,11 @@ const App = () => {
         <WhatIDo />
         <Career />
         <Work />
+        <TechStack />
+        <Contact />
         
-        {/* Contact Section (Placeholder) */}
-
-        {/* Contact Section (Placeholder) */}
-        <section className="section-container" id="contact">
-          <h2 style={{ fontSize: '4rem', marginBottom: '2rem' }}>Get in touch</h2>
-          <p style={{ fontSize: '2rem', marginBottom: '2rem' }}>hello@ankushsingh.com</p>
-        </section>
-
-        <footer style={{ padding: '4rem 5vw', borderTop: '1px solid var(--border)', textAlign: 'center', opacity: 0.5 }}>
-          <p>© 2026 Ankush Singh. Built with React & GSAP.</p>
+        <footer style={{ padding: '8rem 5vw', borderTop: '1px solid var(--border)', textAlign: 'center', opacity: 0.3, fontSize: '0.8rem', letterSpacing: '0.1em' }}>
+          <p>© 2026 ANKUSH SINGH. ALL RIGHTS RESERVED.</p>
         </footer>
       </MainContainer>
     </>
